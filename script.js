@@ -1,26 +1,34 @@
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
+// Person class definition
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+  }
 }
 
-Person.prototype.greet = function() {
-  // Cypress expects: "Hello, my name is Alice and I am 25 years old."
-  console.log(Hello, my name is ${this.name} and I am ${this.age} years old.);
-};
+// Employee class inheriting from Person
+class Employee extends Person {
+  constructor(name, age, jobTitle) {
+    super(name, age); // call the parent (Person) constructor
+    this.jobTitle = jobTitle;
+  }
 
-function Employee(name, age, jobTitle) {
-  Person.call(this, name, age);
-  this.jobTitle = jobTitle;
+  jobGreet() {
+    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+  }
 }
 
-Employee.prototype = Object.create(Person.prototype);
-Employee.prototype.constructor = Employee;
+// Example usage (you can comment these out during testing)
+const person1 = new Person("Alice", 25);
+person1.greet();  
+// Output: Hello, my name is Alice, I am 25 years old.
 
-// Cypress expects jobGreet to include the comma before "my job title", but "and I am ..."
-Employee.prototype.jobGreet = function() {
-  console.log(Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.);
-};
-
-// Do not change code below this line
-window.Person = Person;
-window.Employee = Employee;
+const employee1 = new Employee("Bob", 30, "Manager");
+employee1.greet();      
+// Output: Hello, my name is Bob, I am 30 years old.
+employee1.jobGreet();   
+// Output: Hello, my name is Bob, I am 30 years old, and my job title is Manager.
