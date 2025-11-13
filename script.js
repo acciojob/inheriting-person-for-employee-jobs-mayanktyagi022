@@ -10,10 +10,10 @@ class Person {
   }
 }
 
-// Employee class (inherits from Person)
+// Employee class inheriting from Person
 class Employee extends Person {
   constructor(name, age, jobTitle) {
-    super(name, age); // call parent constructor
+    super(name, age); // Call the parent constructor
     this.jobTitle = jobTitle;
   }
 
@@ -24,11 +24,12 @@ class Employee extends Person {
   }
 }
 
-// Example usage (for manual testing)
+// Example usage:
+
 const person = new Person("Alice", 25);
-person.greet(); 
+person.greet();
 // Output: Hello, my name is Alice, I am 25 years old.
 
 const employee = new Employee("Bob", 30, "Manager");
-employee.jobGreet(); 
+employee.jobGreet();
 // Output: Hello, my name is Bob, I am 30 years old, and my job title is Manager.
